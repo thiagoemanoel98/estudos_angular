@@ -1,24 +1,4 @@
-<h1>Header: {{ title }}</h1>
-
-<button (click)="emitValue()">Enviar valor</button>
-
-@if (tipoUsuario === 'feliz') {
-  <p>😁</p>
-} @else {
-  <p>😎</p>
-}
-
-@switch (tipoUsuario) {
-  @case ('feliz') {
-    <p>😁</p>
-  }
-  @default {
-    <p>😎</p>
-  }
-}
-
-@for (user of usuarios; track user.id) {
-  <p>Nome: {{ user.name }}</p>
-}
-
 <!-- @input @output: Comunicação entre componentes -->
+<p>Header: {{ _storageService.currentUser }}</p>
+
+<button (click)="update()">Atualizar</button>

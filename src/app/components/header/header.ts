@@ -1,13 +1,14 @@
 import {
   Component,
   EventEmitter,
+  inject,
   Input,
-  input,
   OnChanges,
   Output,
   SimpleChanges,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Storage } from '../../services/storage';
 
 @Component({
   selector: 'app-header',
@@ -15,29 +16,11 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header implements OnChanges {
-  @Input() title: string = ''; // Receber title
+export class Header {
+  // Injecação do service
+  _storageService = inject(Storage);
 
-  // Valor que sera emitido para o componente pai
-  @Output() emitText = new EventEmitter<string>();
-
-  tipoUsuario: 'feliz' | 'legal' = 'feliz';
-
-  usuarios = [
-    {
-      id: 0,
-      name: 'Thiago 😎',
-    },
-    {
-      id: 1,
-      name: 'Jamilly 😁',
-    },
-  ];
-
-  // Disparado toda vez que o valor do input mudar
-  ngOnChanges(changes: SimpleChanges): void {}
-
-  emitValue() {
-    this.emitText.emit('Texto do componente filho');
+  update() {
+    this._storageService.updateCurrentUser();
   }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Storage } from '../../services/storage';
 
 // seletor usado para referenciar o componente no html
 @Component({
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './content.html',
   styleUrl: './content.css',
 })
-export class Content {}
+export class Content {
+  readonly _storageService = inject(Storage);
+}
