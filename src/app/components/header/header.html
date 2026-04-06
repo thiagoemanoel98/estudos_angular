@@ -1,14 +1,24 @@
-<h1>{{ HeaderTitle }}</h1>
+<h1>Header: {{ title }}</h1>
 
-<!--Class biding: Adiciona a classe se ApplyClass for true-->
-<h2 [class.my-color]="ApplyClass">{{ HeaderTitle }}</h2>
+<button (click)="emitValue()">Enviar valor</button>
 
-<!---->
-<h3 [style.color]="colorStyle">Meu Elemento html</h3>
+@if (tipoUsuario === 'feliz') {
+  <p>😁</p>
+} @else {
+  <p>😎</p>
+}
 
-<!--<input [value]="InputValue" />-->
+@switch (tipoUsuario) {
+  @case ('feliz') {
+    <p>😁</p>
+  }
+  @default {
+    <p>😎</p>
+  }
+}
 
-<!--Atualiza o valor do input quando edita-->
-<input [(ngModel)]="InputValue" />
+@for (user of usuarios; track user.id) {
+  <p>Nome: {{ user.name }}</p>
+}
 
-<button (click)="updateTitle()">Atualizar</button>
+<!-- @input @output: Comunicação entre componentes -->

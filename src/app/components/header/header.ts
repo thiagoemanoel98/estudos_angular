@@ -1,4 +1,12 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -7,15 +15,29 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {
-  HeaderTitle = 'YouTube';
-  InputValue = 'Valor inicial';
-  ApplyClass = false;
-  colorStyle = 'orange';
+export class Header implements OnChanges {
+  @Input() title: string = ''; // Receber title
 
-  updateTitle() {
-    // this.HeaderTitle = 'Thiago';
-    console.log(this.InputValue);
-    this.ApplyClass = true;
+  // Valor que sera emitido para o componente pai
+  @Output() emitText = new EventEmitter<string>();
+
+  tipoUsuario: 'feliz' | 'legal' = 'feliz';
+
+  usuarios = [
+    {
+      id: 0,
+      name: 'Thiago 😎',
+    },
+    {
+      id: 1,
+      name: 'Jamilly 😁',
+    },
+  ];
+
+  // Disparado toda vez que o valor do input mudar
+  ngOnChanges(changes: SimpleChanges): void {}
+
+  emitValue() {
+    this.emitText.emit('Texto do componente filho');
   }
 }

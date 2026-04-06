@@ -11,4 +11,9 @@ import { Header } from './components/header/header';
 })
 export class App {
   protected readonly title = signal('principais-funcionalidades');
+  titleHeader = 'Titulo do header'; // Mandar pro componente header
+
+  receiveValue(text: string) {
+    console.log('Valor recebido: ', text);
+  }
 }
