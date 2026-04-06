@@ -1,0 +1,14 @@
+<h1>{{ HeaderTitle }}</h1>
+
+<!--Class biding: Adiciona a classe se ApplyClass for true-->
+<h2 [class.my-color]="ApplyClass">{{ HeaderTitle }}</h2>
+
+<!---->
+<h3 [style.color]="colorStyle">Meu Elemento html</h3>
+
+<!--<input [value]="InputValue" />-->
+
+<!--Atualiza o valor do input quando edita-->
+<input [(ngModel)]="InputValue" />
+
+<button (click)="updateTitle()">Atualizar</button>
